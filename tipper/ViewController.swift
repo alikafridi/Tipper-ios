@@ -13,59 +13,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
-    @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var tipSlider: UISlider!
+    @IBOutlet weak var tipValue: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
-        
-        var tipper = 0
-        
-        if (NSUserDefaults.standardUserDefaults().objectForKey("tip") != nil) {
-            //if tipValue != nil {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            let tipValue = defaults.doubleForKey("tip")
-            
-            if (tipValue == 0.25) {
-                tipper = 2
-            }
-            else if (tipValue == 0.15) {
-                tipper = 0
-            }
-            else {
-                tipper = 1
-            }
-            println(tipper);
-            tipControl.selectedSegmentIndex = tipper
-        }
+        getFromDefaults()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var tipper = 0
-        
-        if (NSUserDefaults.standardUserDefaults().objectForKey("tip") != nil) {
-            //if tipValue != nil {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            let tipValue = defaults.doubleForKey("tip")
-            
-            if (tipValue == 0.25) {
-                tipper = 2
-            }
-            else if (tipValue == 0.15) {
-                tipper = 0
-            }
-            else {
-                tipper = 1
-            }
-            println(tipper);
-            tipControl.selectedSegmentIndex = tipper
-            
-            updateValues()
-        }
-        
+        getFromDefaults()
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,17 +42,35 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func getFromDefaults() {
+        if (NSUserDefaults.standardUserDefaults().objectForKey("tip") != nil) {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            let tip = defaults.integerForKey("tip")
+            println(tip)
+            
+            tipSlider.value = Float(tip)
+            
+            updateValues()
+        }
+    }
+    
     func updateValues() {
-        var tipPercentages = [0.15, 0.2, 0.25]
-        var tipPercent = tipPercentages[tipControl.selectedSegmentIndex]
-        
+        var tipInt = Int(tipSlider.value)
+        var tipDouble = Double (tipInt)
+        var tipPercent = tipDouble/100
         var billAmount = NSString(string: billField.text!).doubleValue
+        println("tip percent: \(tipPercent)")
+        
         var tip = billAmount * tipPercent
         var total = billAmount + tip
         
         tipLabel.text = String (format: "$%.2f", tip)
         totalLabel.text = String (format: "$%.2f", total)
         
+        var tipsy = Int(tipSlider.value)
+        tipValue.text = String (tipsy)
+        
+        println(tipsy)
     }
 }
 

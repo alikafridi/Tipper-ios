@@ -68,19 +68,22 @@
                                     <action selector="onEditingChanged:" destination="vXZ-lx-hvc" eventType="editingChanged" id="zBm-UR-8hw"/>
                                 </connections>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Iqj-wW-aoo">
-                                <rect key="frame" x="16" y="273" width="288" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fzk-XU-6f7">
+                                <rect key="frame" x="267" y="273" width="37" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <segments>
-                                    <segment title="15%"/>
-                                    <segment title="20%"/>
-                                    <segment title="25%"/>
-                                </segments>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="5" maxValue="30" id="G1F-ix-vJP">
+                                <rect key="frame" x="14" y="269" width="243" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <connections>
-                                    <action selector="onEditingChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="0Sw-wU-n1k"/>
+                                    <action selector="onEditingChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="PWh-vS-AVg"/>
                                 </connections>
-                            </segmentedControl>
+                            </slider>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -90,7 +93,8 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="UnE-av-55j">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="JGx-D2-kVl">
+                        <barButtonItem key="rightBarButtonItem" image="gear2" id="JGx-D2-kVl">
+                            <color key="tintColor" red="1" green="0.37857353921945391" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="TLB-gc-X5g" kind="push" id="0o8-pC-urp"/>
                             </connections>
@@ -98,8 +102,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billField" destination="xbc-b0-4sX" id="xNE-sc-FXH"/>
-                        <outlet property="tipControl" destination="Iqj-wW-aoo" id="sB0-Ls-u3I"/>
                         <outlet property="tipLabel" destination="1Oe-a1-uA1" id="4oz-vI-sRm"/>
+                        <outlet property="tipSlider" destination="G1F-ix-vJP" id="R0q-W1-ZQ0"/>
+                        <outlet property="tipValue" destination="fzk-XU-6f7" id="2MZ-lm-5EJ"/>
                         <outlet property="totalLabel" destination="m3P-FQ-AIE" id="org-zY-MNu"/>
                     </connections>
                 </viewController>
@@ -121,33 +126,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default tip percent:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e0V-c1-jTa">
-                                <rect key="frame" x="16" y="102" width="147" height="21"/>
+                                <rect key="frame" x="16" y="93" width="147" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="fsa-px-8d2">
-                                <rect key="frame" x="171" y="99" width="133" height="29"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="5" maxValue="30" id="XHl-LA-0ef">
+                                <rect key="frame" x="14" y="132" width="253" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <segments>
-                                    <segment title="15%"/>
-                                    <segment title="20%"/>
-                                    <segment title="25%"/>
-                                </segments>
                                 <connections>
-                                    <action selector="onEditingChanged:" destination="TLB-gc-X5g" eventType="valueChanged" id="dfP-Gs-kR1"/>
+                                    <action selector="onEditingChanged:" destination="TLB-gc-X5g" eventType="valueChanged" id="bCC-53-DP7"/>
                                 </connections>
-                            </segmentedControl>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e59-as-qxm">
+                                <rect key="frame" x="273" y="136" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="7RM-PV-gMN"/>
                     <connections>
-                        <outlet property="defaultTipControl" destination="fsa-px-8d2" id="FO9-hU-ev2"/>
+                        <outlet property="tipSlider" destination="XHl-LA-0ef" id="CO9-Q2-H5u"/>
+                        <outlet property="tipValue" destination="e59-as-qxm" id="90i-3x-mSj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sp-gl-df9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,6 +184,9 @@
             <point key="canvasLocation" x="154" y="303"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear2" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
