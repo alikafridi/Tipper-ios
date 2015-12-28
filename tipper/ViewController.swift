@@ -22,11 +22,13 @@ class ViewController: UIViewController {
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         getFromDefaults()
+        billField.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         getFromDefaults()
+        billField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +41,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
+        //view.endEditing(true)
     }
     
     func getFromDefaults() {
@@ -68,9 +70,10 @@ class ViewController: UIViewController {
         totalLabel.text = String (format: "$%.2f", total)
         
         var tipsy = Int(tipSlider.value)
-        tipValue.text = String (tipsy)
+        tipValue.text = "\(tipsy) %"
         
         println(tipsy)
     }
+    
 }
 

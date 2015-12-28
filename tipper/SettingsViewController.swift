@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func onEditingChanged(sender: AnyObject) {
         var tipInt = Int(tipSlider.value)
-        tipValue.text = "\(tipInt)"
+        tipValue.text = "\(tipInt) %"
         
         // Save value
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -50,6 +50,6 @@ class SettingsViewController: UIViewController {
             tipSlider.value = Float(tipsy)
         }
         var tip = Int(tipSlider.value)
-        tipValue.text = String (tip)
+        tipValue.text = "\(tip) %"
     }
 }
